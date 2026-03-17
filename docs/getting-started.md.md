@@ -129,6 +129,6 @@ Notice the response strips out sensitive fields like `project_key`, `creator_uid
 
 ## Next steps
 
-- Read the [Architecture](architecture.md) page to understand how the dashboard, API, and SDK fit together.
-- Check the [API Reference](api-reference.md) for the full list of endpoints.
-- Follow the [SDK Guide](sdk-guide.md) to render your blog content in an external Next.js app.
+- Read the [Architecture](architecture.md.md) page to understand how the dashboard, API, and SDK fit together.
+- Check the [API Reference](api-reference.md.md) for the full list of endpoints.
+- Follow the [SDK Guide](sdk-guide.md.md) to render your blog content in an external Next.js app.

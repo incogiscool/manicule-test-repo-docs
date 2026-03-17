@@ -1,0 +1,34 @@
+{
+  "navigation": [
+    {
+      "title": "Getting Started",
+      "path": "getting-started.md",
+      "type": "guide"
+    },
+    {
+      "title": "Architecture",
+      "path": "architecture.md",
+      "type": "explanation"
+    },
+    {
+      "title": "API Reference",
+      "path": "api-reference.md",
+      "type": "reference"
+    },
+    {
+      "title": "SDK Guide",
+      "path": "sdk-guide.md",
+      "type": "guide"
+    },
+    {
+      "title": "Data Model",
+      "path": "data-model.md",
+      "type": "reference"
+    },
+    {
+      "title": "Authentication",
+      "path": "authentication.md",
+      "type": "explanation"
+    }
+  ]
+}

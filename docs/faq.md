@@ -4,7 +4,7 @@
 
 **What you see:** An error like `Transaction numbers are only allowed on a replica set member or mongos` when signing up or creating projects.
 
-**Why it happens:** Several routes (`POST /api/auth/signup`, `POST /api/projects/create`, `DELETE /api/projects/delete`, and `DELETE /api/auth/delete`) use Mongoose transactions via `mongoose.startSession()` and `withTransaction()`. MongoDB transactions require a replica set — a plain standalone `mongod` instance does not support them.
+**Why it happens:** Several routes (`POST /api/auth/signup`, `POST /api/projects/create`, `DELETE /api/projects/delete`, and `DELETE /api/auth/delete`) use Mongoose transactions via `mongoose.startSession()` and `withTransaction()`. MongoDB transactions require a replica set  -  a plain standalone `mongod` instance does not support them.
 
 **How to fix it:** Use a MongoDB Atlas cluster instead of a local standalone instance. Atlas free-tier clusters are replica sets by default. If you need a local replica set, you can initialise one with `rs.initiate()` in the `mongosh` shell, or use [mongodb-memory-server](https://github.com/typegoose/mongodb-memory-server) with replica set mode enabled.
 
@@ -66,7 +66,7 @@ If you hit a limit, the API returns `success: false` with a message like `"Canno
 
 **Why it happens:** Project keys are generated once at project creation using `crypto.randomBytes(32)` and stored in the `projects` collection. There is no `PATCH /api/projects/update` endpoint or dashboard UI for regenerating a key.
 
-**Workaround:** If you need to invalidate a key, delete the project and create a new one with the same title. You'll get a fresh key, but you'll also lose all the posts in the old project — so make sure to save your post content first.
+**Workaround:** If you need to invalidate a key, delete the project and create a new one with the same title. You'll get a fresh key, but you'll also lose all the posts in the old project  -  so make sure to save your post content first.
 
 ---
 
@@ -76,7 +76,7 @@ If you hit a limit, the API returns `success: false` with a message like `"Canno
 
 **Why it happens:** The project has been migrated between hosting providers but the SDK's `baseAPIRoute` hasn't been updated to match. The comment in the constants file even notes it should be changed to `https://www.atomcms.dev/api`. Both URLs currently serve the same application, so the SDK still works, but this inconsistency is a known issue.
 
-**Impact:** No action needed for SDK consumers — the `cmsatom.netlify.app` endpoint responds correctly. If you're building or modifying the SDK itself, update `baseAPIRoute` to the correct canonical URL before publishing.
+**Impact:** No action needed for SDK consumers  -  the `cmsatom.netlify.app` endpoint responds correctly. If you're building or modifying the SDK itself, update `baseAPIRoute` to the correct canonical URL before publishing.
 
 ---
 

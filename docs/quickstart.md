@@ -43,7 +43,7 @@ In the dashboard, click **New Project**, give it a name, and hit **Create**. Ope
 
 ## 5. Copy your project key
 
-Inside your project, find the `project_key` — it's displayed in the project settings panel. It starts with `atom-`. Copy it.
+Inside your project, find the `project_key`  -  it's displayed in the project settings panel. It starts with `atom-`. Copy it.
 
 ## 6. Add the key to your environment
 
@@ -69,7 +69,7 @@ import { Suspense } from "react";
 export const metadata = { title: "Blog" };
 
 export default function Blog() {
-  const _cookies = cookies(); // opts out of caching — keeps posts fresh
+  const _cookies = cookies(); // opts out of caching  -  keeps posts fresh
 
   return (
     <Suspense fallback={<AtomLoadingSkeleton />}>
@@ -119,6 +119,6 @@ If the page loads but shows no posts, double-check that `ATOM_PROJECT_KEY` in `.
 
 ## Next steps
 
-- **More styling options** — wrap the components in your own layout container, or pass custom `remarkPlugins` and `rehypePlugins` to `Atom` for extended markdown support. The [SDK Guide](./sdk-guide.md) covers all component props and configuration.
-- **SEO** — add a sitemap using `generateSitemap` so search engines can index your posts. See [SDK Guide — Generate a sitemap](./sdk-guide.md#7-generate-a-sitemap).
-- **Write more posts** — go back to [atomcms.vercel.app](https://atomcms.vercel.app) and publish more posts. They'll appear on your blog index the next time the page is requested.
+- **More styling options**  -  wrap the components in your own layout container, or pass custom `remarkPlugins` and `rehypePlugins` to `Atom` for extended markdown support. The [SDK Guide](./sdk-guide.md) covers all component props and configuration.
+- **SEO**  -  add a sitemap using `generateSitemap` so search engines can index your posts. See [SDK Guide  -  Generate a sitemap](./sdk-guide.md#7-generate-a-sitemap).
+- **Write more posts**  -  go back to [atomcms.vercel.app](https://atomcms.vercel.app) and publish more posts. They'll appear on your blog index the next time the page is requested.

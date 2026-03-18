@@ -4,7 +4,7 @@ Atom serves two distinct audiences from a single codebase: developers who want a
 
 ## Two products, one repository
 
-**The CMS dashboard** lives at `https://atomcms.vercel.app`. You sign up, create Projects, write Posts using the markdown editor, and copy your `project_key`. Everything here runs on Next.js App Router with session-based authentication — the dashboard is a traditional server-rendered web app.
+**The CMS dashboard** lives at `https://atomcms.vercel.app`. You sign up, create Projects, write Posts using the markdown editor, and copy your `project_key`. Everything here runs on Next.js App Router with session-based authentication  -  the dashboard is a traditional server-rendered web app.
 
 **The `atom-nextjs` SDK** is an NPM package (`packages/atom-nextjs/`) that your blog's visitors interact with, indirectly. You install it into your own Next.js site, drop in two components, and it fetches your published posts from the Atom public API using your `project_key`. Visitors never touch the CMS dashboard.
 

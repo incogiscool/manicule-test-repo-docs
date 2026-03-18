@@ -6,7 +6,7 @@ The `atom-nextjs` package gives you a set of React Server Components and utility
 
 - A Next.js 13 or 14 project using the App Router
 - TailwindCSS already set up in your project
-- An Atom account with at least one project — you'll need the `project_key`
+- An Atom account with at least one project  -  you'll need the `project_key`
 
 ## 1. Install the packages
 
@@ -40,7 +40,7 @@ Without the `content` entry, Tailwind will strip the SDK's class names during th
 
 ## 3. Store your project key
 
-Add your `project_key` to your environment variables. Never commit this value to source control — it's the Bearer token that authenticates your app to the Atom API.
+Add your `project_key` to your environment variables. Never commit this value to source control  -  it's the Bearer token that authenticates your app to the Atom API.
 
 ```bash
 # .env.local
@@ -82,8 +82,8 @@ export default function Blog() {
 
 `AtomPage` takes two required props:
 
-- `projectKey` — your project's secret key
-- `baseRoute` — the URL prefix for individual posts (e.g. `"/blog"` means each post links to `/blog/<post-id>`)
+- `projectKey`  -  your project's secret key
+- `baseRoute`  -  the URL prefix for individual posts (e.g. `"/blog"` means each post links to `/blog/<post-id>`)
 
 The optional `title` prop (default `true`) controls whether the project title is rendered as an `<h1>` above the post cards. Set it to `false` if you want to supply your own heading.
 
@@ -126,8 +126,8 @@ export default function BlogPage({ params }: BlogParams) {
 
 `Atom` takes two required props:
 
-- `projectKey` — your project key
-- `postId` — the post UUID from the URL (this is the `id` field on the `Post` type, not a MongoDB `_id`)
+- `projectKey`  -  your project key
+- `postId`  -  the post UUID from the URL (this is the `id` field on the `Post` type, not a MongoDB `_id`)
 
 It also accepts optional `remarkPlugins` and `rehypePlugins` arrays if you want to extend MDX rendering. The defaults are `remark-gfm` and `rehype-sanitize`.
 
@@ -137,10 +137,10 @@ It also accepts optional `remarkPlugins` and `rehypePlugins` arrays if you want 
 
 `generatePostMetadata` calls the Atom API to fetch the post, then returns a Next.js `Metadata` object with:
 
-- `title` — the post's title
-- `description` — the post's teaser
-- `keywords` — the post's keywords array
-- `authors.name` — the post's author
+- `title`  -  the post's title
+- `description`  -  the post's teaser
+- `keywords`  -  the post's keywords array
+- `authors.name`  -  the post's author
 
 If the post can't be found, it returns `{ title: "Couldn't find post.", authors: { name: "Atom" } }` rather than throwing, so your page still renders gracefully.
 
@@ -180,7 +180,7 @@ If you want to cache the blog index (accepting that newly published posts may no
 
 ```tsx
 export default function Blog() {
-  // No cookies() call — Next.js will cache this page normally
+  // No cookies() call  -  Next.js will cache this page normally
   return (
     <Suspense fallback={<AtomLoadingSkeleton />}>
       <AtomPage baseRoute="/blog" projectKey={process.env.ATOM_PROJECT_KEY!} />

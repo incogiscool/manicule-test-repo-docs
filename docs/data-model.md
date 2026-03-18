@@ -17,13 +17,13 @@ All model refs are created (or reused from `mongoose.models`) in `lib/server/mon
 
 ## `credentials`
 
-Stores one document per account. This is Lucia's "user table" — it must exist before a session can be created.
+Stores one document per account. This is Lucia's "user table"  -  it must exist before a session can be created.
 
 **TypeScript type** (`lib/types.ts`):
 
 ```ts
 type UserCredentials = {
-  _id: string;          // UUID generated at signup — used as the Lucia user ID
+  _id: string;          // UUID generated at signup  -  used as the Lucia user ID
   email: string;        // unique, lowercased, trimmed
   password_hash: string; // Argon2 hash of (password + HASH_SALT)
   createdAt: Date;
@@ -81,7 +81,7 @@ One document per project. Posts are stored as embedded subdocuments rather than 
 type Project = {
   _id: string;         // UUID
   title: string;
-  project_key: string; // "atom-" + 32 random bytes (base64) — used by the SDK
+  project_key: string; // "atom-" + 32 random bytes (base64)  -  used by the SDK
   creator_uid: string; // matches UserCredentials._id
   posts: Post[];
   createdAt: Date;
@@ -89,7 +89,7 @@ type Project = {
 };
 
 type Post = {
-  id: string;          // UUID — used as the post identifier in API calls
+  id: string;          // UUID  -  used as the post identifier in API calls
   title: string;
   author: string;
   body: string;        // markdown content
@@ -102,7 +102,7 @@ type Post = {
 };
 ```
 
-**Why embed posts?** A single `ProjectsRef.findOne()` returns the project and all its posts together. This keeps the public API fast — one query to serve the entire blog index. The tradeoff is that a project document grows with each post, and you can't paginate posts at the database level without additional work.
+**Why embed posts?** A single `ProjectsRef.findOne()` returns the project and all its posts together. This keeps the public API fast  -  one query to serve the entire blog index. The tradeoff is that a project document grows with each post, and you can't paginate posts at the database level without additional work.
 
 The `project_key` is generated at project creation using 32 cryptographically random bytes encoded as base64, prefixed with `"atom-"`. It cannot be regenerated through the current API (see [FAQ](./faq.md)).
 
@@ -127,7 +127,7 @@ Lucia uses this collection to validate incoming session cookies. When a session 
 
 ## SDK public types
 
-The `atom-nextjs` package exposes two narrower types for SDK consumers. These are what the public API endpoints return — they omit `project_key`, `body`, and `creator_uid`:
+The `atom-nextjs` package exposes two narrower types for SDK consumers. These are what the public API endpoints return  -  they omit `project_key`, `body`, and `creator_uid`:
 
 ```ts
 // packages/atom-nextjs/src/lib/types.ts
@@ -165,6 +165,6 @@ Plan limits are defined as an array in `lib/contants.tsx` and enforced in the ro
 | `startup` | 3 | 1,000 | 100,000 characters |
 | `business` | 5 | 2,500 | 500,000 characters |
 
-"Max posts" is checked against the total number of posts across all projects on the account, not per-project. The check in `POST /api/posts/create` compares `userPlan.max_docs` against `project.posts.length` — currently it checks the specific project's post count, not the global total, so the practical limit is per-project.
+"Max posts" is checked against the total number of posts across all projects on the account, not per-project. The check in `POST /api/posts/create` compares `userPlan.max_docs` against `project.posts.length`  -  currently it checks the specific project's post count, not the global total, so the practical limit is per-project.
 
 **Startup and Business plans are currently disabled.** The `disabled: true` flag on those plan entries in `planDetails` means the billing UI doesn't surface them for purchase. All accounts use the `single` plan.

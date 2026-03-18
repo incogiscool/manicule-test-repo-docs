@@ -258,13 +258,13 @@ Only the project's owner can delete it. The operation runs in a transaction that
 
 Returns a full `Project` document including `project_key`. Supports two authentication modes.
 
-**Mode 1 — session (dashboard use):**
+**Mode 1  -  session (dashboard use):**
 
 - **Auth:** Session cookie
 - **Query params:** `?project_id=<id>`
 - **Returns:** Full `Project` including `project_key`
 
-**Mode 2 — Bearer token:**
+**Mode 2  -  Bearer token:**
 
 - **Auth:** `Authorization: Bearer <project_key>` header
 - **Query params:** None (the project is identified by the key)
@@ -298,7 +298,7 @@ ApiResponse<ClientProject>
 {
   id: string;
   title: string;
-  posts: ClientPost[];   // public fields only — no body, no creator_uid
+  posts: ClientPost[];   // public fields only  -  no body, no creator_uid
   createdAt: Date;
   updatedAt: Date;
 }

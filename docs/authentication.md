@@ -1,6 +1,6 @@
 # Authentication
 
-Atom uses [Lucia v3](https://lucia-auth.com) for session management. Lucia handles the session lifecycle — creating, validating, refreshing, and invalidating sessions — while the application code owns credential verification (password hashing) and route protection.
+Atom uses [Lucia v3](https://lucia-auth.com) for session management. Lucia handles the session lifecycle  -  creating, validating, refreshing, and invalidating sessions  -  while the application code owns credential verification (password hashing) and route protection.
 
 ## How sessions work
 
@@ -50,7 +50,7 @@ export const validateRequest = cache(
 );
 ```
 
-The function is wrapped in React's `cache()`. This means within a single server render — even if ten different components call `validateRequest()` — the session is only looked up from MongoDB once. The result is shared across the render.
+The function is wrapped in React's `cache()`. This means within a single server render  -  even if ten different components call `validateRequest()`  -  the session is only looked up from MongoDB once. The result is shared across the render.
 
 If the session is still valid but Lucia has marked it as "fresh" (about to be refreshed), the function silently rolls over to a new cookie. If the session has expired or is missing, it writes a blank cookie to clear the stale value in the browser.
 
@@ -104,7 +104,7 @@ export const isPasswordValid = async (hash: string, password: string) => {
 };
 ```
 
-The `HASH_SALT` value must remain constant for the lifetime of the application — changing it will invalidate all existing passwords. It does not need to be unique per user; Argon2 generates its own random per-hash salt internally. The `HASH_SALT` environment variable is an additional application-level pepper.
+The `HASH_SALT` value must remain constant for the lifetime of the application  -  changing it will invalidate all existing passwords. It does not need to be unique per user; Argon2 generates its own random per-hash salt internally. The `HASH_SALT` environment variable is an additional application-level pepper.
 
 ## Lucia's MongoDB adapter
 
@@ -149,10 +149,10 @@ export const ratelimit = new Ratelimit({
 });
 ```
 
-When the limit is exceeded, the middleware returns a JSON `ApiResponse` with `success: false` and `message: "Too many requests."` — the route handler is never called. This applies equally to authenticated and unauthenticated routes.
+When the limit is exceeded, the middleware returns a JSON `ApiResponse` with `success: false` and `message: "Too many requests."`  -  the route handler is never called. This applies equally to authenticated and unauthenticated routes.
 
 ## Common misconceptions
 
-**"Session cookies expire when the browser closes."** They don't — the cookie is set with `expires: false`, so it persists between browser sessions. Users stay logged in until they explicitly sign out.
+**"Session cookies expire when the browser closes."** They don't  -  the cookie is set with `expires: false`, so it persists between browser sessions. Users stay logged in until they explicitly sign out.
 
 **"The project_key and the session cookie are the same thing."** They're not. The session cookie authenticates *dashboard users* (humans managing posts). The `project_key` authenticates *SDK consumers* (Next.js apps fetching published posts). They go through separate code paths and carry different privileges.

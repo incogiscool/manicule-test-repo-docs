@@ -1,0 +1,61 @@
+{
+  "nav": [
+    {
+      "title": "Getting Started",
+      "items": [
+        {
+          "title": "Quickstart",
+          "path": "docs/quickstart.md"
+        },
+        {
+          "title": "Getting Started (self-hosting)",
+          "path": "docs/getting-started.md"
+        }
+      ]
+    },
+    {
+      "title": "Concepts",
+      "items": [
+        {
+          "title": "Architecture",
+          "path": "docs/architecture.md"
+        },
+        {
+          "title": "Authentication",
+          "path": "docs/authentication.md"
+        },
+        {
+          "title": "Data Model",
+          "path": "docs/data-model.md"
+        }
+      ]
+    },
+    {
+      "title": "SDK",
+      "items": [
+        {
+          "title": "SDK Guide",
+          "path": "docs/sdk-guide.md"
+        }
+      ]
+    },
+    {
+      "title": "Reference",
+      "items": [
+        {
+          "title": "API Reference",
+          "path": "docs/api-reference.md"
+        }
+      ]
+    },
+    {
+      "title": "Help",
+      "items": [
+        {
+          "title": "FAQ",
+          "path": "docs/faq.md"
+        }
+      ]
+    }
+  ]
+}

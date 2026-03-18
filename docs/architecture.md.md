@@ -64,12 +64,12 @@ When a project is created, the server generates a unique `project_key` (a `atom-
 
 All data lives in four MongoDB collections:
 
-| Collection | What it stores |
-|---|---|
-| `credentials` | Email + Argon2 password hash per user |
-| `documents` | User profiles (name, email, plan, project summaries) |
-| `projects` | Full project documents with posts embedded as subdocuments |
-| `sessions` | Lucia auth sessions |
+| Collection    | What it stores                                             |
+| ------------- | ---------------------------------------------------------- |
+| `credentials` | Email + Argon2 password hash per user                      |
+| `documents`   | User profiles (name, email, plan, project summaries)       |
+| `projects`    | Full project documents with posts embedded as subdocuments |
+| `sessions`    | Lucia auth sessions                                        |
 
 Posts are not stored in their own collection. They're embedded as an array inside the project document. This means fetching a project returns all its posts in one query.
 
